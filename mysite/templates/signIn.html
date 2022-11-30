@@ -1,4 +1,3 @@
-
 {% if m %}
 <script>
   alert('{{ m }}');
@@ -6,19 +5,20 @@
 </script>
 {% endif %}
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
+<style>ul{
+color:red;
+}</style>
 
     <meta charset="UTF-8">
-    <title>Register</title>
-
+    <title>First Django Prokect</title>
+      <link rel="stylesheet" href="style.css">
 </head>
 
 <nav>
-
-
 
     <ul>
         <li><a href="/signin/">Sign In</a></li>
@@ -31,16 +31,16 @@
 
 
 
-    <form action="/postregister/" method="post">
-        {% csrf_token %}
-        Name:
-        <input type="text" name="name"><br><br>
-        Email :
+    <form action="/postsign/" method="post">
 
+
+        Email :
+        {% csrf_token %}
         <input type="email" name="email"> <br><br>
         Password:
         <input type="password" name="pass"><br><br>
-        <input type="submit" value="register">
+        <input type="submit" value="SignIn">
+        <button type="button" onclick="location.href = '{% url 'reg'   %}'">Register</button>
 
     </form>
 </body>
