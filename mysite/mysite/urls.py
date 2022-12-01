@@ -22,7 +22,7 @@ from django.urls import path
 
 
 
-from .views import signIn,postsign,home,logout,register,postregister
+from .views import signIn,postsign,home,logout,register,postregister,viewclient
 
 
 
@@ -36,4 +36,5 @@ urlpatterns = [
     path('logout/',logout, name ="log"),
     path('register/', register, name ="reg"),
     path('postregister/', postregister, name="postregister"),
+    path('viewclient/', viewclient, name="viewclient"),
 ]

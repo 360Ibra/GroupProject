@@ -34,7 +34,25 @@ authent = firebase.auth()
 database = firebase.database()
 
 
+
+def viewclient(request):
+    all_users = database.child("users").child("fmNKSTflBTfaghFzhvo5pDQdTbM2").child("clients").get()
+    list = []
+
+    for user in all_users.each():
+                # print(user.key())
+                print(user.val())  # {name": "Mortimer 'Morty' Smith"}
+                list.append(user.val())
+    print(list)
+
+
+
+
+    return render(request,"welcome.html", {'list': list})
+
+
 def signIn(request):
+
     return render(request,"signIn.html")
 
 
@@ -77,6 +95,8 @@ def postregister(request):
     data = {"name":name,"status":"1"}
 
     database.child("users").child(uid).child("details").set(data)
+
+
 
     return render(request,"signIn.html")
 

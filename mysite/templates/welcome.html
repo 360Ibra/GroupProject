@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,11 +14,16 @@
         p{
         color : red;
         }
+
+
+
+
     </style>
 </head>
 
 
 <body>
+
 
 
 <p>You have logged in</p>
@@ -26,6 +32,21 @@
     <button type="button" onclick="location.href = '{% url 'log'   %}'" >Logout</button>
 </div>
 Welcome {{e}}
+
+
+  <button type="button" onclick="location.href = '{% url 'viewclient'   %}'">View Clients</button>
+
+
+
+
+        <ul>
+            <li >Employee List</li>
+        {% for user in list %}
+            <li style="color:black;" >{{ user }}</li>
+        {% endfor %}
+        </ul>
+
+
 
 </body>
 </html>
