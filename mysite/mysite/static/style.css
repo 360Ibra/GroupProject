@@ -71,5 +71,10 @@
   text-decoration: none;
 }
 
-
-
+.main .btnSI{
+  background: #718093;
+  color: #fff;
+  border-radius: 5px;
+  padding: 5px 10px;
+  text-decoration: none;
+}
