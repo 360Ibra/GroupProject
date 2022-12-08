@@ -35,7 +35,7 @@ database = firebase.database()
 
 
 def signIn(request):
-    return render(request,"signIn.html")
+    return render(request,"sign_in.html")
 
 
 
@@ -48,7 +48,7 @@ def postsign(request):
         user = authent.sign_in_with_email_and_password(email,passw)
     except:
         message="Invalid Credentials"
-        return render(request,"signIn.html",{"m":message})
+        return render(request,"sign_in.html",{"m":message})
 
     print(user['idToken'])
     # Creating a session token
@@ -70,7 +70,7 @@ def postregister(request):
     # Getting Unique User id
     except:
         message = "Account could not be created try again!"
-        return render(request,"register.html",{"m":message})
+        return render(request,"sign_up.html",{"m":message})
 
     uid = user['localId']
 
@@ -78,18 +78,18 @@ def postregister(request):
 
     database.child("users").child(uid).child("details").set(data)
 
-    return render(request,"signIn.html")
+    return render(request,"sign_in.html")
 
 def home(request):
-    return render(request,"home.html")
+    return render(request,"index.html")
 
 
 def logout(request):
     auth.logout(request)
-    return render(request,'signIn.html')
+    return render(request,'sign_in.html')
 
 def register(request):
-    return render(request,"register.html")
+    return render(request,"sign_up.html")
 
 
 
