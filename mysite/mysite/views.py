@@ -34,8 +34,26 @@ authent = firebase.auth()
 database = firebase.database()
 
 
+
+def viewclient(request):
+    all_users = database.child("users").child("fmNKSTflBTfaghFzhvo5pDQdTbM2").child("clients").get()
+    list = []
+
+    for user in all_users.each():
+                # print(user.key())
+                print(user.val())  # {name": "Mortimer 'Morty' Smith"}
+                list.append(user.val())
+    print(list)
+
+
+
+
+    return render(request,"welcome.html", {'list': list})
+
+
 def signIn(request):
-    return render(request,"sign_in.html")
+
+    return render(request,"signIn.html")
 
 
 
@@ -48,7 +66,7 @@ def postsign(request):
         user = authent.sign_in_with_email_and_password(email,passw)
     except:
         message="Invalid Credentials"
-        return render(request,"sign_in.html",{"m":message})
+        return render(request,"signIn.html",{"m":message})
 
     print(user['idToken'])
     # Creating a session token
@@ -70,7 +88,7 @@ def postregister(request):
     # Getting Unique User id
     except:
         message = "Account could not be created try again!"
-        return render(request,"sign_up.html",{"m":message})
+        return render(request,"register.html",{"m":message})
 
     uid = user['localId']
 
@@ -78,18 +96,20 @@ def postregister(request):
 
     database.child("users").child(uid).child("details").set(data)
 
-    return render(request,"sign_in.html")
+
+
+    return render(request,"signIn.html")
 
 def home(request):
-    return render(request,"index.html")
+    return render(request,"home.html")
 
 
 def logout(request):
     auth.logout(request)
-    return render(request,'sign_in.html')
+    return render(request,'signIn.html')
 
 def register(request):
-    return render(request,"sign_up.html")
+    return render(request,"register.html")
 
 
 
