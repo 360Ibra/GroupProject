@@ -70,3 +70,19 @@
   padding: 10px 20px;
   text-decoration: none;
 }
+
+.dash{
+  height: 100vh;
+}
+
+.header{
+  background-color: #fff;
+}
+
+.sidebar{
+  background-color: #1c1f23;
+}
+
+.main{
+  background-color: #c3c5ca;
+}

@@ -1,3 +1,5 @@
+"Ibrahim Aminu"
+
 """mysite URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -15,6 +17,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
+
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 
 
@@ -22,10 +28,7 @@ from django.urls import path
 
 
 
-from .views import signIn,postsign,home,logout,register,postregister,viewclient
-
-
-
+from .views import signIn,postsign,home,logout,register,postregister,viewclient,predictions,my_dashboard
 
 urlpatterns = [
 
@@ -37,4 +40,22 @@ urlpatterns = [
     path('register/', register, name ="reg"),
     path('postregister/', postregister, name="postregister"),
     path('viewclient/', viewclient, name="viewclient"),
+    path('predictions/', predictions, name="predictions"),
+    path('dashboard/', my_dashboard, name="dashboard"),
 ]
+urlpatterns += staticfiles_urlpatterns()
+
+
+#
+# urlpatterns = [
+#
+#     path('admin/', admin.site.urls),
+#     path('',home),
+#     path('signin/', signIn),
+#     path('postsign/',postsign),
+#     path('logout/',logout, name ="log"),
+#     path('register/', register, name ="reg"),
+#     path('postregister/', postregister, name="postregister"),
+#     path('viewclient/', viewclient, name="viewclient"),
+#     path('predict/', viewclient, name="predict"),
+# ] + static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)

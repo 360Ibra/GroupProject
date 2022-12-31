@@ -1,0 +1,83 @@
+<!--Ibrahim Aminu-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Predictions</title>
+
+<head>
+ <style>body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  background-color: #333;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+
+
+label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+
+</style>
+
+
+
+
+</head>
+
+ <ul>
+        <li><a href="/signin/">Sign In</a></li>
+<!--         <li><a href="/postsign/">Post SIGN In</a></li>-->
+        <li><a href="/">Home</a></li>
+         <li><a href="/predictions/">View Predictions</a></li>
+    </ul>
+<body>
+
+    <button type="button" onclick="location.href = '{% url 'viewclient'   %}'">View Clients</button>
+{% load static %}
+
+
+<h1>Stock Predictions</h1>
+
+
+  <div class="grid">
+    <img class="grid-item" src="{% static 'AAPL.jpg' %}" alt="My image">
+    <img class="grid-item" src="{% static 'NVDA.jpg' %}" alt="My image">
+    <img class="grid-item" src="{% static 'ADBE.jpg' %}" alt="My image">
+    <img class="grid-item" src="{% static 'MFST.jpg' %}" alt="My image">
+    <img class="grid-item" src="{% static 'AMD.jpg' %}" alt="My image">
+    <img class="grid-item" src="{% static 'Figure_1.png' %}" alt="My image">
+    <img class="grid-item" src="{% static 'eth.jpg' %}" alt="My image">
+  </div>
+
+
+</body>
+</html>
