@@ -1,7 +1,7 @@
 "Ibrahim Aminu"
 
 from django.shortcuts import render
-from django.contrib import  auth
+from django.contrib import auth
 import pyrebase
 from django.shortcuts import redirect
 

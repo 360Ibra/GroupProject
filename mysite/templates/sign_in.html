@@ -44,18 +44,20 @@
 
 <section class="main">
     <div class="container">
-        <div class="row">
-            <div class="col-sm-12 col-md-6">
-                <form class="form-text" action="/postsign/" method="post">
-                    Email:
-        <!--            {% csrf_token %}-->
-                    <input type="email" name="email"> <br><br>
-                    Password:
-                    <input type="password" name="pass"><br><br>
-                    <input class="btn btn-dark" type="submit" value="Sign In">
-                </form>
+        <div class="card-header text-center">Sign In</div>
+            <div class="row justify-content-center">
+                <div class="col-4">
+                    <div class="card align-content-center text-center bg-dark">
+                        <form class="form-text" action="/postsign/" method="post">
+                            Email:
+                            <input type="email" name="email"> <br><br>
+                            Password:
+                            <input type="password" name="pass"><br><br>
+                            <input class="btn btn-warning" type="submit" value="submit">
+                        </form>
+                    </div>
+                </div>
             </div>
-        </div>
     </div>
 </section>
 </body>
