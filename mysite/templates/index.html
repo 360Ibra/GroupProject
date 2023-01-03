@@ -12,9 +12,8 @@
   <meta property="og:image" content="">
 
   <link rel="manifest" href="site.webmanifest">
-  {% load static %}
-  <link rel="stylesheet" href="{% static 'bootstrap.css' %}">
-  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/style.css">
 
   <meta name="theme-color" content="#fafafa">
 </head>
@@ -40,13 +39,10 @@
               <a href="#" class="nav-link">Service</a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">About</a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">Contact</a>
-            </li>
-            <li class="nav-item">
               <a href="sign_in.html" class="nav-link">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a href="chatbot.html" class="nav-link">Chatbot</a>
             </li>
           </ul>
         </div>
@@ -56,7 +52,7 @@
 </section>
 
 
-<section class="main" style="background-image: url({% static 'pexels-adrien-olichon-2387793.jpg' %});">
+<section class="main" style="background-image: url(img/pexels-adrien-olichon-2387793.jpg)">
   <div class="container">
     <div class="row">
       <div class="col-sm-12 col-md-6">
@@ -65,7 +61,7 @@
           Rather than relying on high-paid stockbrokers to advise clients, new technology enables cheaper and more accurate
           advice through the use of AI and appropriate datasets of financial information.
         </p>
-        <a href="/register/" class="readMore">Get Started</a>
+        <a href="sign_up.html" class="readMore">Get Started</a>
       </div>
     </div>
   </div>
