@@ -1,6 +1,9 @@
+"Ibrahim Aminu"
+
 from django.shortcuts import render
 from django.contrib import auth
 import pyrebase
+from django.shortcuts import redirect
 
 import pandas as pd
 import matplotlib.dates as mdates
@@ -26,7 +29,7 @@ from django.http import  HttpResponse
 from django.shortcuts import render
 from django.contrib import  auth
 import pyrebase
-
+import  sklearn
 
 # arr = [2,"four ", "six", 8]
 # def hello_world(request):
@@ -78,6 +81,11 @@ def viewclient(request):
 def signIn(request):
 
     return render(request,"signIn.html")
+
+def predictions(request):
+
+    return render(request,"predictions.html")
+
 
 
 
@@ -138,7 +146,7 @@ def register(request):
 
 def stockPredict():
 
-    nvda_data = pd.read_csv('C:/Users/Ibrahim/PycharmProjects/GroupProject/mysite/mysite/csv/ADBE.csv',index_col='Date')
+    nvda_data = pd.read_csv('C:/Users/Ibrahim/Documents/GroupProject/mysite/mysite/csv/AAPL.csv',index_col='Date')
     nvda_data.head()
     #Open - Price When the market Opens
     #High - Highest recorded price for the day
@@ -298,6 +306,8 @@ def stockPredict():
     plt.xlabel('Time')
     plt.ylabel('Scaled USD')
     plt.legend()
+    plt.title("AAPL")
+    # plt.savefig("C:/Users/Ibrahim/Documents/GroupProject/mysite/templates/static/AAPL.jpg")
     plt.show()
 
 
@@ -308,16 +318,16 @@ def stockPredict():
     # plt.ylabel('Scaled USD')
     #
     # plt.legend()
+
     # plt.show()
-
-
-stockPredict()
+#
+# stockPredict()
 
 
 
 
 def cryptoPredict():
-    nvda_data = pd.read_csv('C:/Users/Ibrahim/PycharmProjects/GroupProject/mysite/mysite/csv/Ethereum_Historical_Data.csv', index_col='Date')
+    nvda_data = pd.read_csv('C:/Users/Ibrahim/Documents/GroupProject/mysite/mysite/csv/Bitcoin_Historical_Data.csv', index_col='Date')
     nvda_data.head()
     # Open - Price When the market Opens
     # High - Highest recorded price for the day
@@ -410,6 +420,18 @@ def cryptoPredict():
 
     predictions = lstm.predict(X_test)
 
+    threshold = 3.2
+    dates = [dt.datetime.strptime(d, '%d/%m/%Y').date() for d in X_test_date]
+
+    for i in range(len(predictions)):
+        for i in range(len(predictions)):
+            if np.any(predictions[i] > threshold):
+                # Do something
+                print("ALERT: Predicted price exceeds threshold at time step SELL AT ".upper(), dates[i])
+            elif np.any(predictions[i] < threshold):
+                # Do something else
+                print("ALERT: Predicted price is below threshold at time step BUY AT".upper(), dates[i])
+
     # Compare predictions to actual 'Close' values
 
     # mse = mean_squared_error(y_test, y_pred)
@@ -440,25 +462,68 @@ def cryptoPredict():
     interval = mdates.MonthLocator()
     formatter = mdates.DateFormatter("%b %Y")
 
-    plt.figure(figsize=(15, 10))
-    plt.gca().xaxis.set_major_formatter(formatter)
-    plt.gca().xaxis.set_major_locator(interval)
+    # plt.figure(figsize=(15, 10),facecolor='#0c1c23')
+    # # plt.figure(figsize=(15, 10)).set_facecolor('#0c1c23')
+    # plt.grid(linestyle='--')
+    # plt.gca().xaxis.set_major_formatter(formatter)
+    # plt.gca().xaxis.set_major_locator(interval)
+    #
+    # # Rotate the tick labels at an angle
+    # plt.xticks(rotation=45)
+    #
+    # # Use a smaller font size for the tick labels
+    # plt.xticks(fontsize=8)
+    #
+    # # Plot the true values and the predictions
+    # plt.plot(X_test_date_sliced, y_test_sliced, label='True values')
+    # plt.plot(X_test_date_sliced, predictions, label='Predictions')
+    # plt.title("Bitcoin")
+    # plt.xlabel('Time')
+    # plt.ylabel('Scaled USD')
+    # plt.legend()
+    # # plt.savefig("C:/Users/Ibrahim/Documents/GroupProject/mysite/templates/static/btc.jpg")
+    # plt.rcParams['figure.facecolor'] = '#0c1c23'
+    # plt.show()
+    fig, ax = plt.subplots(figsize=(15, 10))
+
+    # Set the background color of the plot
+    fig.set_facecolor('#0c1c23')
+    ax.set_facecolor('#0c1c23')
+
+    # Set the grid style and other plot properties
+    ax.grid(linestyle='--')
+    ax.xaxis.set_major_formatter(formatter)
+    ax.xaxis.set_major_locator(interval)
 
     # Rotate the tick labels at an angle
     plt.xticks(rotation=45)
 
     # Use a smaller font size for the tick labels
     plt.xticks(fontsize=8)
+    plt.tick_params(axis='x', colors='white')
+    plt.tick_params(axis='y', colors='white')
 
     # Plot the true values and the predictions
-    plt.plot(X_test_date_sliced, y_test_sliced, label='True values')
-    plt.plot(X_test_date_sliced, predictions, label='Predictions')
+    ax.plot(X_test_date_sliced, y_test_sliced, label='True values', color="red")
+    ax.plot(X_test_date_sliced, predictions, label='Predictions' ,color="blue")
+    ax.set_title("Bitcoin", color='white')
+    ax.set_xlabel('Time', color='white')
+    ax.set_ylabel('Scaled USD', color='white')
+    ax.legend(facecolor='#0c1c23', edgecolor='white', fontsize=12,labelcolor ="white")
 
-    plt.xlabel('Time')
-    plt.ylabel('Scaled USD')
-    plt.legend()
+    # Show the plot
     plt.show()
-
 
 # cryptoPredict()
 
+def my_view(request):
+  image_url = "{% static 'AAPL.jpg' %}"
+  return render(request, 'welcome.html', {'image_url': image_url})
+
+
+def my_home(request):
+  image_url = "{% static 'pexels-adrien-olichon-2387793.jpg' %}"
+  return render(request, 'home.html', {'image_url': image_url})
+
+def my_dashboard(request):
+  return render(request, 'dashboard.html')

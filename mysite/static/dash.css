@@ -1,0 +1,66 @@
+body {
+    height: 100vh;
+    display: grid;
+    grid-template-columns:300px 1fr ;
+    grid-template-rows: 60px 1fr;
+    grid-template-areas:
+"side header"
+"side main";
+    margin: 0px;
+}
+
+
+.header{
+    background-color: #fff;
+   grid-area: header;
+}
+
+.sidebar{
+    grid-area: side;
+    background-color: #0c1c23;
+}
+
+.main{
+    padding: 25px;
+    grid-area: main;
+    background-color: #c3c5ca;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas:
+"c1 c2 c3"
+"c4 c4 c5"
+"c4 c4 c6";
+    gap: 20px;
+
+}
+
+.card{
+    background-color: #0c1c23;
+    border-radius: 10px;
+}
+
+.card:nth-child(1){
+    grid-area:c1
+}
+.card:nth-child(2){
+    grid-area:c2
+}
+.card:nth-child(3){
+    grid-area:c3
+}
+.card:nth-child(4){
+    grid-area:c4
+}
+.card:nth-child(5){
+    grid-area:c5
+}
+.card:nth-child(6){
+    grid-area:c6
+}
+
+img {
+  width: 100%; /* Make the image take up the full width of the parent element */
+  height: 100%; /* Make the image take up the full height of the parent element */
+  object-fit: cover; /* Make the image cover the entire parent element, preserving the aspect ratio */
+}

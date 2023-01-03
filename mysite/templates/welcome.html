@@ -1,3 +1,4 @@
+<!--Ibrahim Aminu-->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,10 +17,110 @@
         }
 
 
+nav {
+  background-color: #333;
+}
 
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  color: red;
+  margin: 0;
+  padding: 0;
+}
+
+div {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+}
+
+button {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #111;
+}
+
+ul {
+ list-style: none;
+  margin: 0;
+  padding: 0;
+
+}
+
+li {
+   margin: 8px 0;
+  padding: 8px;
+  background-color: #eee;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-in-out;
+
+
+
+}
+li:hover {
+   background-color: #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+li {
+  background-color: #f2f2f2;
+}
+
+
+li::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-image: url("image/icon.png");
+  background-size: cover;
+  margin-right: 8px;
+
+  .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      grid-gap: 16px;
+    }
+
+    /* Use media queries to adjust the layout at different screen sizes */
+    @media (min-width: 600px) {
+      .grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      }
+    }
+
+    @media (min-width: 900px) {
+      .grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      }
+    }
+}
 
     </style>
 </head>
+<nav>
+
+    <ul>
+        <li><a href="/signin/">Sign In</a></li>
+<!--         <li><a href="/postsign/">Post SIGN In</a></li>-->
+        <li><a href="/">Home</a></li>
+         <li><a href="/predictions/">View Predictions</a></li>
+    </ul>
+    </ul>
+</nav>
 
 
 <body>
@@ -31,11 +132,11 @@
 <div>
     <button type="button" onclick="location.href = '{% url 'log'   %}'" >Logout</button>
 </div>
-Welcome {{e}}
+
 
 
   <button type="button" onclick="location.href = '{% url 'viewclient'   %}'">View Clients</button>
-
+    <button type="button" onclick="location.href = '{% url 'predictions'   %}'">View Predictions</button>
 
 
 
@@ -45,6 +146,10 @@ Welcome {{e}}
             <li style="color:black;" >{{ user }}</li>
         {% endfor %}
         </ul>
+
+
+
+
 
 
 
