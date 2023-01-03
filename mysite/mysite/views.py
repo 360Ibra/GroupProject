@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.contrib import  auth
+from django.contrib import auth
 import pyrebase
 
 import pandas as pd
